@@ -1,0 +1,22 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Application {
+  id            String   @id @default(cuid())
+  company       String
+  role          String
+  status        String   @default("Applied")
+  date          DateTime @default(now())
+  link          String?
+  notes         String?
+  interviewDate DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
